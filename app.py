@@ -202,7 +202,7 @@ TEXT = {
             {"Senyawa": "Sulfat (SO₄²⁻)",  "Endapan": "BaSO₄",      "Analit": "S",   "GF": 0.1374},
             {"Senyawa": "Klorida (Cl⁻)",   "Endapan": "AgCl",        "Analit": "Cl",  "GF": 0.2474},
             {"Senyawa": "Besi",            "Endapan": "Fe₂O₃",       "Analit": "Fe",  "GF": 0.6994},
-        ]}
+        ]}}
 ...
 [truncated]
 [truncated]
