@@ -223,7 +223,7 @@ def save_to_history(method, sample_name, result, unit, inputs):
     })
 
 with st.sidebar:
-    st.markdown("## ⚗ GraviCalc")
+    st.markdown("## ⚗️ GraviCalc")
     st.caption(TEXT[st.session_state.lang]["app_caption"])
     st.divider()
 
