@@ -203,9 +203,6 @@ TEXT = {
             {"Senyawa": "Klorida (Cl⁻)",   "Endapan": "AgCl",        "Analit": "Cl",  "GF": 0.2474},
             {"Senyawa": "Besi",            "Endapan": "Fe₂O₃",       "Analit": "Fe",  "GF": 0.6994},
         ]}}
-...
-[truncated]
-[truncated]
 # ── Session state for history ────────────────────────────────────────────────
 if "history" not in st.session_state:
     st.session_state.history = []
