@@ -5,22 +5,20 @@ import pandas as pd
 
 st.set_page_config(
     page_title="GraviCalc — Gravimetric Analysis",
-    page_icon="⚗️",
+    page_icon="⚗",
     layout="wide",
 )
 
-# ── All text in both languages ───────────────────────────────────────────────
 TEXT = {
     "English": {
         "app_caption": "v1.0.0 · ISO 9001",
         "app_note": "All calculations are performed locally. No data is transmitted.",
         "nav": ["Overview", "Assay / Purity", "Loss on Drying", "Residue on Ignition", "Gravimetric Factor", "History"],
-        # Overview
         "overview_title": "Gravimetric Analysis Calculator",
         "overview_sub": "Select a calculation method from the sidebar to begin.",
         "card_assay_title": "Assay / Purity",
         "card_assay_desc": "Calculate percentage purity of a compound from gravimetric data.",
-         "card_assay_formula": "Formula: % Purity = (Precipitate Wt × GF × PF / Sample Wt) × 100",
+        "card_assay_formula": "Formula: % Purity = (Precipitate Wt × GF × PF / Sample Wt) × 100",
         "card_roi_title": "Residue on Ignition (ROI)",
         "card_roi_desc": "Calculate percentage ash or inorganic residue after ignition.",
         "card_roi_formula": "Formula: % ROI = (Residue Wt / Sample Wt) × 100",
@@ -30,7 +28,6 @@ TEXT = {
         "card_gf_title": "Gravimetric Factor",
         "card_gf_desc": "Calculate or look up standard gravimetric factors for analysis.",
         "card_gf_formula": "Formula: GF = (MW_analyte × n) / MW_precipitate",
-        # Assay
         "assay_title": "Assay / Purity",
         "assay_sub": "Calculate percentage purity of a compound.",
         "ref_formula": "REFERENCE FORMULA",
@@ -51,7 +48,6 @@ TEXT = {
         "metric_result": "Result",
         "btn_save": "Save to History",
         "saved_ok": "Saved to history.",
-        # LOD
         "lod_title": "Loss on Drying (LOD)",
         "lod_sub": "Calculate percentage moisture and volatile content.",
         "lod_table": "| Symbol | Meaning |\n|--------|--------|\n| Wᵢ | Initial weight (g) |\n| W_d | Dried weight (g) |\n| W_t | Tare weight (g) |",
@@ -67,7 +63,6 @@ TEXT = {
         "metric_lod": "% LOD",
         "metric_water_lost": "Water Lost",
         "metric_dry_wt": "Dry Basis Wt",
-        # ROI
         "roi_title": "Residue on Ignition (ROI)",
         "roi_sub": "Calculate percentage ash or inorganic residue content.",
         "roi_table": "| Symbol | Meaning |\n|--------|--------|\n| W_f | Final weight (g) |\n| W_t | Crucible tare (g) |\n| Wₛ | Sample weight (g) |",
@@ -77,7 +72,6 @@ TEXT = {
         "btn_calc_roi": "Calculate ROI",
         "err_final_lt_tare": "Final weight must be greater than or equal to crucible tare.",
         "metric_residue_wt": "Residue Weight",
-        # GF
         "gf_title": "Gravimetric Factor",
         "gf_sub": "Calculate GF and browse common reference values.",
         "gf_calc_sub": "Calculate GF",
@@ -91,9 +85,6 @@ TEXT = {
         "gf_ref_sub": "Common Reference Values",
         "gf_search": "Search by compound, precipitate, or analyte",
         "gf_search_placeholder": "e.g. BaSO4 or Chloride",
-        "col_compound": "Compound",
-        "col_precipitate": "Precipitate",
-        "col_analyte": "Analyte",
         "gf_compounds": [
             {"Compound": "Sulfate (SO₄²⁻)",  "Precipitate": "BaSO₄",      "Analyte": "SO₃", "GF": 0.3430},
             {"Compound": "Sulfate (SO₄²⁻)",  "Precipitate": "BaSO₄",      "Analyte": "S",   "GF": 0.1374},
@@ -106,7 +97,6 @@ TEXT = {
             {"Compound": "Nickel",           "Precipitate": "Ni(DMGH)₂",  "Analyte": "Ni",  "GF": 0.2032},
             {"Compound": "Aluminum",         "Precipitate": "Al₂O₃",       "Analyte": "Al",  "GF": 0.5293},
         ],
-        # History
         "history_title": "Calculation History",
         "history_sub": "All calculations saved this session.",
         "history_empty": "No calculations saved yet. Run a calculation and press **Save to History** to record it here.",
@@ -118,7 +108,6 @@ TEXT = {
         "app_caption": "v1.0.0 · ISO 9001",
         "app_note": "Semua perhitungan dilakukan secara lokal. Tidak ada data yang dikirim.",
         "nav": ["Beranda", "Kadar / Kemurnian", "Susut Pengeringan", "Sisa Pemijaran", "Faktor Gravimetri", "Riwayat"],
-        # Overview
         "overview_title": "Kalkulator Analisis Gravimetri",
         "overview_sub": "Pilih metode perhitungan dari menu di samping untuk memulai.",
         "card_assay_title": "Kadar / Kemurnian",
@@ -133,7 +122,6 @@ TEXT = {
         "card_gf_title": "Faktor Gravimetri",
         "card_gf_desc": "Hitung atau cari faktor gravimetri standar untuk analisis.",
         "card_gf_formula": "Rumus: GF = (BM_analit × n) / BM_endapan",
-        # Assay
         "assay_title": "Kadar / Kemurnian",
         "assay_sub": "Hitung persentase kemurnian suatu senyawa.",
         "ref_formula": "RUMUS REFERENSI",
@@ -154,7 +142,6 @@ TEXT = {
         "metric_result": "Hasil",
         "btn_save": "Simpan ke Riwayat",
         "saved_ok": "Berhasil disimpan ke riwayat.",
-        # LOD
         "lod_title": "Susut Pengeringan (LOD)",
         "lod_sub": "Hitung persentase kadar air dan zat mudah menguap.",
         "lod_table": "| Simbol | Keterangan |\n|--------|------------|\n| Bₐ | Berat awal (g) |\n| Bₖ | Berat kering (g) |\n| Bₜ | Berat tara (g) |",
@@ -170,7 +157,6 @@ TEXT = {
         "metric_lod": "% LOD",
         "metric_water_lost": "Air yang Hilang",
         "metric_dry_wt": "Berat Kering Netto",
-        # ROI
         "roi_title": "Sisa Pemijaran (ROI)",
         "roi_sub": "Hitung persentase abu atau residu anorganik.",
         "roi_table": "| Simbol | Keterangan |\n|--------|------------|\n| Bₐ | Berat akhir (g) |\n| Bₜ | Berat krus kosong (g) |\n| Bₛ | Berat sampel (g) |",
@@ -180,7 +166,6 @@ TEXT = {
         "btn_calc_roi": "Hitung ROI",
         "err_final_lt_tare": "Berat akhir harus lebih besar atau sama dengan berat krus kosong.",
         "metric_residue_wt": "Berat Residu",
-        # GF
         "gf_title": "Faktor Gravimetri",
         "gf_sub": "Hitung GF dan lihat nilai referensi umum.",
         "gf_calc_sub": "Hitung GF",
@@ -194,18 +179,37 @@ TEXT = {
         "gf_ref_sub": "Nilai Referensi Umum",
         "gf_search": "Cari berdasarkan senyawa, endapan, atau analit",
         "gf_search_placeholder": "cth. BaSO4 atau Klorida",
-        "col_compound": "Senyawa",
-        "col_precipitate": "Endapan",
-        "col_analyte": "Analit",
         "gf_compounds": [
             {"Senyawa": "Sulfat (SO₄²⁻)",  "Endapan": "BaSO₄",      "Analit": "SO₃", "GF": 0.3430},
             {"Senyawa": "Sulfat (SO₄²⁻)",  "Endapan": "BaSO₄",      "Analit": "S",   "GF": 0.1374},
             {"Senyawa": "Klorida (Cl⁻)",   "Endapan": "AgCl",        "Analit": "Cl",  "GF": 0.2474},
             {"Senyawa": "Besi",            "Endapan": "Fe₂O₃",       "Analit": "Fe",  "GF": 0.6994},
-        ]}}
-# ── Session state for history ────────────────────────────────────────────────
+            {"Senyawa": "Kalsium",         "Endapan": "CaO",         "Analit": "Ca",  "GF": 0.7147},
+            {"Senyawa": "Kalsium",         "Endapan": "CaCO₃",       "Analit": "Ca",  "GF": 0.4004},
+            {"Senyawa": "Magnesium",       "Endapan": "MgO",         "Analit": "Mg",  "GF": 0.6031},
+            {"Senyawa": "Fosfor",          "Endapan": "Mg₂P₂O₇",    "Analit": "P",   "GF": 0.2783},
+            {"Senyawa": "Nikel",           "Endapan": "Ni(DMGH)₂",  "Analit": "Ni",  "GF": 0.2032},
+            {"Senyawa": "Aluminium",       "Endapan": "Al₂O₃",       "Analit": "Al",  "GF": 0.5293},
+        ],
+        "history_title": "Riwayat Perhitungan",
+        "history_sub": "Semua perhitungan yang disimpan pada sesi ini.",
+        "history_empty": "Belum ada perhitungan yang disimpan. Lakukan perhitungan lalu tekan **Simpan ke Riwayat**.",
+        "history_count": "data tersimpan pada sesi ini",
+        "btn_clear": "Hapus Semua",
+        "method_labels": {"Assay": "🔵 Kadar", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
+    },
+}
+
 if "history" not in st.session_state:
     st.session_state.history = []
+if "lang" not in st.session_state:
+    st.session_state.lang = "English"
+if "pending_assay" not in st.session_state:
+    st.session_state.pending_assay = None
+if "pending_lod" not in st.session_state:
+    st.session_state.pending_lod = None
+if "pending_roi" not in st.session_state:
+    st.session_state.pending_roi = None
 
 def save_to_history(method, sample_name, result, unit, inputs):
     st.session_state.history.insert(0, {
@@ -218,336 +222,260 @@ def save_to_history(method, sample_name, result, unit, inputs):
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     })
 
-# ── Sidebar navigation ───────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## ⚗ GraviCalc")
-    st.caption("v1.0.0 · ISO 9001")
-    st.divider()
-    page = st.radio(
-        "Navigation",
-        ["Overview", "Assay / Purity", "Loss on Drying", "Residue on Ignition", "Gravimetric Factor", "History"],
-        label_visibility="collapsed",
-    )
-    st.divider()
-    st.caption("All calculations are performed locally. No data is transmitted.")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# OVERVIEW
-# ══════════════════════════════════════════════════════════════════════════════
-if page == "Overview":
-    st.title("Gravimetric Analysis Calculator")
-    st.markdown("Select a calculation method from the sidebar to begin.")
+    st.caption(TEXT[st.session_state.lang]["app_caption"])
     st.divider()
 
+    col_en, col_id = st.columns(2)
+    with col_en:
+        if st.button("🇬🇧 English", use_container_width=True,
+                     type="primary" if st.session_state.lang == "English" else "secondary"):
+            st.session_state.lang = "English"
+            st.rerun()
+    with col_id:
+        if st.button("🇮🇩 Indonesia", use_container_width=True,
+                     type="primary" if st.session_state.lang == "Indonesia" else "secondary"):
+            st.session_state.lang = "Indonesia"
+            st.rerun()
+
+    st.divider()
+    T = TEXT[st.session_state.lang]
+    page = st.radio("nav", T["nav"], label_visibility="collapsed")
+    st.divider()
+    st.caption(T["app_note"])
+
+T = TEXT[st.session_state.lang]
+nav = T["nav"]
+
+if page == nav[0]:
+    st.title(T["overview_title"])
+    st.markdown(T["overview_sub"])
+    st.divider()
     col1, col2 = st.columns(2)
     with col1:
         with st.container(border=True):
-            st.subheader("Assay / Purity")
-            st.write("Calculate percentage purity of a compound from gravimetric data.")
-            st.caption("Formula: % Purity = (Precipitate Wt × GF × PF / Sample Wt) × 100")
-
+            st.subheader(T["card_assay_title"])
+            st.write(T["card_assay_desc"])
+            st.caption(T["card_assay_formula"])
         with st.container(border=True):
-            st.subheader("Residue on Ignition (ROI)")
-            st.write("Calculate percentage ash or inorganic residue after ignition.")
-            st.caption("Formula: % ROI = (Residue Wt / Sample Wt) × 100")
-
+            st.subheader(T["card_roi_title"])
+            st.write(T["card_roi_desc"])
+            st.caption(T["card_roi_formula"])
     with col2:
         with st.container(border=True):
-            st.subheader("Loss on Drying (LOD)")
-            st.write("Determine percentage moisture or volatile content after drying.")
-            st.caption("Formula: % LOD = ((Wi − Wd) / (Wi − Wt)) × 100")
-
+            st.subheader(T["card_lod_title"])
+            st.write(T["card_lod_desc"])
+            st.caption(T["card_lod_formula"])
         with st.container(border=True):
-            st.subheader("Gravimetric Factor")
-            st.write("Calculate or look up standard gravimetric factors for analysis.")
-            st.caption("Formula: GF = (MW_analyte × n) / MW_precipitate")
+            st.subheader(T["card_gf_title"])
+            st.write(T["card_gf_desc"])
+            st.caption(T["card_gf_formula"])
 
-# ══════════════════════════════════════════════════════════════════════════════
-# ASSAY / PURITY
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "Assay / Purity":
-    st.title("Assay / Purity")
-    st.markdown("Calculate percentage purity of a compound.")
+elif page == nav[1]:
+    st.title(T["assay_title"])
+    st.markdown(T["assay_sub"])
     st.divider()
-
     col_form, col_ref = st.columns([2, 1])
-
     with col_ref:
         with st.container(border=True):
-            st.caption("REFERENCE FORMULA")
+            st.caption(T["ref_formula"])
             st.latex(r"\%\ Purity = \frac{W_p \times GF \times PF}{W_s} \times 100")
-            st.markdown("""
-| Symbol | Meaning |
-|--------|---------|
-| Wₚ | Precipitate weight (g) |
-| GF | Gravimetric Factor |
-| PF | Purity Factor (default 1) |
-| Wₛ | Sample weight (g) |
-""")
-
+            st.markdown(T["assay_table"])
     with col_form:
         with st.form("assay_form"):
-            sample_name = st.text_input("Sample Name / ID", placeholder="e.g. Batch #1234")
+            sample_name = st.text_input(T["label_sample_name"], placeholder=T["placeholder_assay"])
             c1, c2 = st.columns(2)
             with c1:
-                sample_weight = st.number_input("Sample Weight (g)", min_value=0.0, format="%.4f", step=0.0001)
-                gf = st.number_input("Gravimetric Factor", min_value=0.0, format="%.4f", step=0.0001, value=1.0)
+                sample_weight = st.number_input(T["label_sample_wt"], min_value=0.0, format="%.4f", step=0.0001)
+                gf = st.number_input(T["label_gf"], min_value=0.0, format="%.4f", step=0.0001, value=1.0)
             with c2:
-                precipitate_weight = st.number_input("Precipitate Weight (g)", min_value=0.0, format="%.4f", step=0.0001)
-                purity_factor = st.number_input("Purity Factor", min_value=0.0, format="%.4f", step=0.0001, value=1.0)
-            submitted = st.form_submit_button("Calculate Purity", use_container_width=True, type="primary")
-
+                precipitate_weight = st.number_input(T["label_ppt_wt"], min_value=0.0, format="%.4f", step=0.0001)
+                purity_factor = st.number_input(T["label_pf"], min_value=0.0, format="%.4f", step=0.0001, value=1.0)
+            submitted = st.form_submit_button(T["btn_calc_assay"], use_container_width=True, type="primary")
         if submitted:
             errors = []
-            if not sample_name:
-                errors.append("Sample name is required.")
-            if sample_weight <= 0:
-                errors.append("Sample weight must be greater than zero.")
-            if precipitate_weight <= 0:
-                errors.append("Precipitate weight must be greater than zero.")
-            if gf <= 0:
-                errors.append("Gravimetric factor must be greater than zero.")
-
+            if not sample_name: errors.append(T["err_name"])
+            if sample_weight <= 0: errors.append(T["err_sample_wt"])
+            if precipitate_weight <= 0: errors.append(T["err_ppt_wt"])
+            if gf <= 0: errors.append(T["err_gf"])
             if errors:
-                for e in errors:
-                    st.error(e)
+                for e in errors: st.error(e)
+                st.session_state.pending_assay = None
             else:
-                purity = (precipitate_weight * gf * purity_factor / sample_weight) * 100
-                st.success(f"**% Purity = {purity:.4g} %**")
+                result = (precipitate_weight * gf * purity_factor / sample_weight) * 100
+                st.session_state.pending_assay = {
+                    "sample_name": sample_name, "result": result,
+                    "inputs": {T["label_sample_wt"]: sample_weight, T["label_ppt_wt"]: precipitate_weight,
+                               "GF": gf, T["label_pf"]: purity_factor}
+                }
+        if st.session_state.pending_assay:
+            p = st.session_state.pending_assay
+            st.success(f"**= {p['result']:.4g} %**")
+            with st.container(border=True):
+                r1, r2, r3 = st.columns(3)
+                r1.metric(T["metric_sample_wt"], f"{p['inputs'][T['label_sample_wt']]:.4f} g")
+                r2.metric(T["metric_ppt_wt"], f"{p['inputs'][T['label_ppt_wt']]:.4f} g")
+                r3.metric(T["metric_result"], f"{p['result']:.4g} %")
+                if st.button(T["btn_save"], key="save_assay"):
+                    save_to_history("Assay", p["sample_name"], p["result"], "%", p["inputs"])
+                    st.session_state.pending_assay = None
+                    st.success(T["saved_ok"])
 
-                with st.container(border=True):
-                    st.markdown(f"**Sample:** {sample_name}")
-                    r1, r2, r3 = st.columns(3)
-                    r1.metric("Sample Wt", f"{sample_weight:.4f} g")
-                    r2.metric("Precipitate Wt", f"{precipitate_weight:.4f} g")
-                    r3.metric("Result", f"{purity:.4g} %")
-
-                    if st.button("Save to History", key="assay_save"):
-                        save_to_history(
-                            "Assay", sample_name, purity, "%",
-                            {"Sample Wt (g)": sample_weight, "Precipitate Wt (g)": precipitate_weight, "GF": gf, "Purity Factor": purity_factor}
-                        )
-                        st.success("Saved to history.")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# LOSS ON DRYING
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "Loss on Drying":
-    st.title("Loss on Drying (LOD)")
-    st.markdown("Calculate percentage moisture and volatile content.")
+elif page == nav[2]:
+    st.title(T["lod_title"])
+    st.markdown(T["lod_sub"])
     st.divider()
-
     col_form, col_ref = st.columns([2, 1])
-
     with col_ref:
         with st.container(border=True):
-            st.caption("REFERENCE FORMULA")
+            st.caption(T["ref_formula"])
             st.latex(r"\%\ LOD = \frac{W_i - W_d}{W_i - W_t} \times 100")
-            st.markdown("""
-| Symbol | Meaning |
-|--------|---------|
-| Wᵢ | Initial weight (g) |
-| W_d | Dried weight (g) |
-| W_t | Tare weight (g) |
-""")
-            st.info("If no container is used, set Tare = 0.")
-
+            st.markdown(T["lod_table"])
+            st.info(T["lod_info"])
     with col_form:
         with st.form("lod_form"):
-            sample_name = st.text_input("Sample Name / ID", placeholder="e.g. API Batch #5678")
+            sample_name = st.text_input(T["label_sample_name"], placeholder=T["placeholder_lod"])
             c1, c2, c3 = st.columns(3)
             with c1:
-                initial_weight = st.number_input("Initial Weight (g)", min_value=0.0, format="%.4f", step=0.0001)
+                initial_weight = st.number_input(T["label_initial_wt"], min_value=0.0, format="%.4f", step=0.0001)
             with c2:
-                dried_weight = st.number_input("Dried Weight (g)", min_value=0.0, format="%.4f", step=0.0001)
+                dried_weight = st.number_input(T["label_dried_wt"], min_value=0.0, format="%.4f", step=0.0001)
             with c3:
-                tare_weight = st.number_input("Tare Weight (g)", min_value=0.0, format="%.4f", step=0.0001, value=0.0)
-            submitted = st.form_submit_button("Calculate LOD", use_container_width=True, type="primary")
-
+                tare_weight = st.number_input(T["label_tare_wt"], min_value=0.0, format="%.4f", step=0.0001, value=0.0)
+            submitted = st.form_submit_button(T["btn_calc_lod"], use_container_width=True, type="primary")
         if submitted:
             errors = []
-            if not sample_name:
-                errors.append("Sample name is required.")
-            if initial_weight <= 0:
-                errors.append("Initial weight must be greater than zero.")
-            if dried_weight <= 0:
-                errors.append("Dried weight must be greater than zero.")
-            if dried_weight >= initial_weight:
-                errors.append("Dried weight must be less than initial weight.")
-
+            if not sample_name: errors.append(T["err_name"])
+            if initial_weight <= 0: errors.append(T["err_initial_wt"])
+            if dried_weight <= 0: errors.append(T["err_dried_wt"])
+            if dried_weight >= initial_weight: errors.append(T["err_dried_lt_initial"])
             if errors:
-                for e in errors:
-                    st.error(e)
+                for e in errors: st.error(e)
+                st.session_state.pending_lod = None
             else:
                 net_initial = initial_weight - tare_weight
                 water_lost = initial_weight - dried_weight
-                dry_weight = dried_weight - tare_weight
+                dry_wt = dried_weight - tare_weight
                 lod = (water_lost / net_initial) * 100
+                st.session_state.pending_lod = {
+                    "sample_name": sample_name, "result": lod,
+                    "water_lost": water_lost, "dry_wt": dry_wt,
+                    "inputs": {T["label_initial_wt"]: initial_weight, T["label_dried_wt"]: dried_weight,
+                               T["label_tare_wt"]: tare_weight}
+                }
+        if st.session_state.pending_lod:
+            p = st.session_state.pending_lod
+            st.success(f"**= {p['result']:.4g} %**")
+            with st.container(border=True):
+                r1, r2, r3 = st.columns(3)
+                r1.metric(T["metric_lod"], f"{p['result']:.4g} %")
+                r2.metric(T["metric_water_lost"], f"{p['water_lost']:.4f} g")
+                r3.metric(T["metric_dry_wt"], f"{p['dry_wt']:.4f} g")
+                if st.button(T["btn_save"], key="save_lod"):
+                    save_to_history("LOD", p["sample_name"], p["result"], "%", p["inputs"])
+                    st.session_state.pending_lod = None
+                    st.success(T["saved_ok"])
 
-                st.success(f"**% LOD = {lod:.4g} %**")
-
-                with st.container(border=True):
-                    st.markdown(f"**Sample:** {sample_name}")
-                    r1, r2, r3 = st.columns(3)
-                    r1.metric("% LOD", f"{lod:.4g} %")
-                    r2.metric("Water Lost", f"{water_lost:.4f} g")
-                    r3.metric("Dry Basis Wt", f"{dry_weight:.4f} g")
-
-                    if st.button("Save to History", key="lod_save"):
-                        save_to_history(
-                            "LOD", sample_name, lod, "%",
-                            {"Initial Wt (g)": initial_weight, "Dried Wt (g)": dried_weight, "Tare Wt (g)": tare_weight}
-                        )
-                        st.success("Saved to history.")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# RESIDUE ON IGNITION
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "Residue on Ignition":
-    st.title("Residue on Ignition (ROI)")
-    st.markdown("Calculate percentage ash or inorganic residue content.")
+elif page == nav[3]:
+    st.title(T["roi_title"])
+    st.markdown(T["roi_sub"])
     st.divider()
-
     col_form, col_ref = st.columns([2, 1])
-
     with col_ref:
         with st.container(border=True):
-            st.caption("REFERENCE FORMULA")
+            st.caption(T["ref_formula"])
             st.latex(r"\%\ ROI = \frac{W_f - W_t}{W_s} \times 100")
-            st.markdown("""
-| Symbol | Meaning |
-|--------|---------|
-| W_f | Final weight (g) |
-| W_t | Crucible tare (g) |
-| Wₛ | Sample weight (g) |
-""")
-
+            st.markdown(T["roi_table"])
     with col_form:
         with st.form("roi_form"):
-            sample_name = st.text_input("Sample Name / ID", placeholder="e.g. Excipient Lot #001")
+            sample_name = st.text_input(T["label_sample_name"], placeholder=T["placeholder_roi"])
             c1, c2, c3 = st.columns(3)
             with c1:
-                sample_weight = st.number_input("Sample Weight (g)", min_value=0.0, format="%.4f", step=0.0001)
+                sample_weight = st.number_input(T["label_sample_wt"], min_value=0.0, format="%.4f", step=0.0001)
             with c2:
-                crucible_tare = st.number_input("Crucible Tare (g)", min_value=0.0, format="%.4f", step=0.0001)
+                crucible_tare = st.number_input(T["label_crucible_tare"], min_value=0.0, format="%.4f", step=0.0001)
             with c3:
-                final_weight = st.number_input("Final Weight (g)", min_value=0.0, format="%.4f", step=0.0001)
-            submitted = st.form_submit_button("Calculate ROI", use_container_width=True, type="primary")
-
+                final_weight = st.number_input(T["label_final_wt"], min_value=0.0, format="%.4f", step=0.0001)
+            submitted = st.form_submit_button(T["btn_calc_roi"], use_container_width=True, type="primary")
         if submitted:
             errors = []
-            if not sample_name:
-                errors.append("Sample name is required.")
-            if sample_weight <= 0:
-                errors.append("Sample weight must be greater than zero.")
-            if final_weight < crucible_tare:
-                errors.append("Final weight must be greater than or equal to crucible tare.")
-
+            if not sample_name: errors.append(T["err_name"])
+            if sample_weight <= 0: errors.append(T["err_sample_wt"])
+            if final_weight < crucible_tare: errors.append(T["err_final_lt_tare"])
             if errors:
-                for e in errors:
-                    st.error(e)
+                for e in errors: st.error(e)
+                st.session_state.pending_roi = None
             else:
                 residue_weight = final_weight - crucible_tare
                 roi = (residue_weight / sample_weight) * 100
+                st.session_state.pending_roi = {
+                    "sample_name": sample_name, "result": roi,
+                    "residue_weight": residue_weight,
+                    "inputs": {T["label_sample_wt"]: sample_weight, T["label_crucible_tare"]: crucible_tare,
+                               T["label_final_wt"]: final_weight}
+                }
+        if st.session_state.pending_roi:
+            p = st.session_state.pending_roi
+            st.success(f"**= {p['result']:.4g} %**")
+            with st.container(border=True):
+                r1, r2 = st.columns(2)
+                r1.metric("% ROI", f"{p['result']:.4g} %")
+                r2.metric(T["metric_residue_wt"], f"{p['residue_weight']:.4f} g")
+                if st.button(T["btn_save"], key="save_roi"):
+                    save_to_history("ROI", p["sample_name"], p["result"], "%", p["inputs"])
+                    st.session_state.pending_roi = None
+                    st.success(T["saved_ok"])
 
-                st.success(f"**% ROI = {roi:.4g} %**")
-
-                with st.container(border=True):
-                    st.markdown(f"**Sample:** {sample_name}")
-                    r1, r2 = st.columns(2)
-                    r1.metric("% ROI", f"{roi:.4g} %")
-                    r2.metric("Residue Weight", f"{residue_weight:.4f} g")
-
-                    if st.button("Save to History", key="roi_save"):
-                        save_to_history(
-                            "ROI", sample_name, roi, "%",
-                            {"Sample Wt (g)": sample_weight, "Crucible Tare (g)": crucible_tare, "Final Wt (g)": final_weight}
-                        )
-                        st.success("Saved to history.")
-
-# ══════════════════════════════════════════════════════════════════════════════
-# GRAVIMETRIC FACTOR
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "Gravimetric Factor":
-    st.title("Gravimetric Factor")
-    st.markdown("Calculate GF and browse common reference values.")
+elif page == nav[4]:
+    st.title(T["gf_title"])
+    st.markdown(T["gf_sub"])
     st.divider()
-
     col_calc, col_table = st.columns([1, 1])
-
     with col_calc:
         with st.container(border=True):
-            st.subheader("Calculate GF")
+            st.subheader(T["gf_calc_sub"])
             with st.form("gf_form"):
-                mw_analyte = st.number_input("MW of Analyte (g/mol)", min_value=0.0, format="%.4f", step=0.001)
-                mw_precipitate = st.number_input("MW of Precipitate (g/mol)", min_value=0.0, format="%.4f", step=0.001)
-                ratio = st.number_input("Stoichiometric Ratio (n)", min_value=0.0, format="%.4f", step=0.001, value=1.0)
-                submitted = st.form_submit_button("Calculate GF", use_container_width=True, type="primary")
-
+                mw_analyte = st.number_input(T["label_mw_analyte"], min_value=0.0, format="%.4f", step=0.001)
+                mw_precipitate = st.number_input(T["label_mw_ppt"], min_value=0.0, format="%.4f", step=0.001)
+                ratio = st.number_input(T["label_ratio"], min_value=0.0, format="%.4f", step=0.001, value=1.0)
+                submitted = st.form_submit_button(T["btn_calc_gf"], use_container_width=True, type="primary")
             if submitted:
-                if mw_precipitate <= 0:
-                    st.error("MW of precipitate must be greater than zero.")
-                elif mw_analyte <= 0:
-                    st.error("MW of analyte must be greater than zero.")
+                if mw_precipitate <= 0: st.error(T["err_mw_ppt"])
+                elif mw_analyte <= 0: st.error(T["err_mw_analyte"])
                 else:
                     gf = (mw_analyte * ratio) / mw_precipitate
-                    st.metric("Gravimetric Factor", f"{gf:.4f}")
+                    st.metric(T["metric_gf"], f"{gf:.4f}")
                     st.latex(r"GF = \frac{MW_{analyte} \times n}{MW_{precipitate}}")
-
     with col_table:
-        st.subheader("Common Reference Values")
-        search = st.text_input("Search by compound, precipitate, or analyte", placeholder="e.g. BaSO4 or Chloride")
-
-        common_factors = [
-            {"Compound": "Sulfate (SO₄²⁻)", "Precipitate": "BaSO₄", "Analyte": "SO₃", "GF": 0.3430},
-            {"Compound": "Sulfate (SO₄²⁻)", "Precipitate": "BaSO₄", "Analyte": "S",   "GF": 0.1374},
-            {"Compound": "Chloride (Cl⁻)",   "Precipitate": "AgCl",  "Analyte": "Cl",  "GF": 0.2474},
-            {"Compound": "Iron",              "Precipitate": "Fe₂O₃", "Analyte": "Fe",  "GF": 0.6994},
-            {"Compound": "Calcium",           "Precipitate": "CaO",   "Analyte": "Ca",  "GF": 0.7147},
-            {"Compound": "Calcium",           "Precipitate": "CaCO₃", "Analyte": "Ca",  "GF": 0.4004},
-            {"Compound": "Magnesium",         "Precipitate": "MgO",   "Analyte": "Mg",  "GF": 0.6031},
-            {"Compound": "Phosphorus",        "Precipitate": "Mg₂P₂O₇", "Analyte": "P","GF": 0.2783},
-            {"Compound": "Nickel",            "Precipitate": "Ni(DMGH)₂", "Analyte": "Ni", "GF": 0.2032},
-            {"Compound": "Aluminum",          "Precipitate": "Al₂O₃", "Analyte": "Al",  "GF": 0.5293},
-        ]
-
+        st.subheader(T["gf_ref_sub"])
+        search = st.text_input(T["gf_search"], placeholder=T["gf_search_placeholder"])
+        compounds = T["gf_compounds"]
         if search:
             s = search.lower()
-            common_factors = [
-                r for r in common_factors
-                if s in r["Compound"].lower() or s in r["Precipitate"].lower() or s in r["Analyte"].lower()
-            ]
-
-        import pandas as pd
-        df = pd.DataFrame(common_factors)
+            compounds = [r for r in compounds if any(s in str(v).lower() for v in r.values())]
+        df = pd.DataFrame(compounds)
         if not df.empty:
             df["GF"] = df["GF"].apply(lambda x: f"{x:.4f}")
         st.dataframe(df, use_container_width=True, hide_index=True)
 
-# ══════════════════════════════════════════════════════════════════════════════
-# HISTORY
-# ══════════════════════════════════════════════════════════════════════════════
-elif page == "History":
-    st.title("Calculation History")
-    st.markdown("All calculations saved this session.")
+elif page == nav[5]:
+    st.title(T["history_title"])
+    st.markdown(T["history_sub"])
     st.divider()
-
     if not st.session_state.history:
-        st.info("No calculations saved yet. Run a calculation and press **Save to History** to record it here.")
+        st.info(T["history_empty"])
     else:
-        col_head, col_btn = st.columns([4, 1])
-        with col_head:
-            st.caption(f"{len(st.session_state.history)} record(s) this session")
-        with col_btn:
-            if st.button("Clear All", type="secondary"):
+        c1, c2 = st.columns([4, 1])
+        with c1:
+            st.caption(f"{len(st.session_state.history)} {T['history_count']}")
+        with c2:
+            if st.button(T["btn_clear"], type="secondary"):
                 st.session_state.history = []
                 st.rerun()
-
-        METHOD_COLORS = {"Assay": "🔵", "LOD": "🟢", "ROI": "🟠"}
-
         for entry in st.session_state.history:
-            icon = METHOD_COLORS.get(entry["method"], "⚪")
-            with st.expander(f"{icon} **{entry['method']}** — {entry['sample_name']}  ·  **{entry['result']:.4g}{entry['unit']}**  ·  {entry['timestamp']}"):
+            label = T["method_labels"].get(entry["method"], entry["method"])
+            with st.expander(f"{label} — {entry['sample_name']}  ·  **{entry['result']:.4g}{entry['unit']}**  ·  {entry['timestamp']}"):
                 cols = st.columns(len(entry["inputs"]))
                 for col, (k, v) in zip(cols, entry["inputs"].items()):
                     col.metric(k, v)
