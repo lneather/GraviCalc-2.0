@@ -103,6 +103,7 @@ TEXT = {
         "history_count": "record(s) this session",
         "btn_clear": "Clear All",
         "method_labels": {"Assay": "🔵 Assay", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
+        "help_final_wt": "Weight of sample + crucible after heating",
     },
     "Indonesia": {
         "app_caption": "v1.0.0 · ISO 9001",
@@ -197,6 +198,7 @@ TEXT = {
         "history_count": "data tersimpan pada sesi ini",
         "btn_clear": "Hapus Semua",
         "method_labels": {"Assay": "🔵 Kadar", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
+        "help_final_wt": "Berat sampel + krus setelah pemanasan",
     },
 }
 
@@ -396,7 +398,7 @@ elif page == nav[4]:
             with c2:
                 crucible_tare = st.number_input(T["label_crucible_tare"], min_value=0.0, format="%.4f", step=0.0001)
             with c3:
-                final_weight = st.number_input(T["label_final_wt"], min_value=0.0, format="%.4f", step=0.0001)
+                final_weight = st.number_input(T["label_final_wt"], min_value=0.0, format="%.4f", step=0.0001, help=T["help_final_wt"])
             submitted = st.form_submit_button(T["btn_calc_roi"], use_container_width=True, type="primary")
         if submitted:
             errors = []
