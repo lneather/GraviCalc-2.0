@@ -103,7 +103,8 @@ TEXT = {
         "history_count": "record(s) this session",
         "btn_clear": "Clear All",
         "method_labels": {"Assay": "🔵 Assay", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
-        "help_final_wt": "Weight of sample + crucible after heating",
+        "help_final_wt": "W_f = Weight of sample + crucible after heating",
+        "help_MW": "Make sure MW analyte is already multiplied by number of molecules."
     },
     "Indonesia": {
         "app_caption": "v1.0.0 · ISO 9001",
@@ -198,7 +199,8 @@ TEXT = {
         "history_count": "data tersimpan pada sesi ini",
         "btn_clear": "Hapus Semua",
         "method_labels": {"Assay": "🔵 Kadar", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
-        "help_final_wt": "Berat sampel + krus setelah pemanasan",
+        "help_final_wt": "Berat Akhir = Berat sampel + krus setelah pemanasan",
+        "help_MW": "Pastikan bahwa Berat Molekul (BM) analit telah dikalikan dengan jumlah molekulnya.”
     },
 }
 
@@ -445,7 +447,7 @@ elif page == nav[1]:
                 ratio = st.number_input(T["label_ratio"], min_value=0.0, format="%.4f", step=0.001, value=1.0)
                 submitted = st.form_submit_button(T["btn_calc_gf"], use_container_width=True, type="primary")
             # ← here, after the form block (less indented)
-            st.caption("⚠️ Make sure MW analyte is already multiplied by number of molecules.")
+            st.caption("⚠️" + T["help_MW"])
             if submitted:
                 if mw_precipitate <= 0: st.error(T["err_mw_ppt"])
                 elif mw_analyte <= 0: st.error(T["err_mw_analyte"])
