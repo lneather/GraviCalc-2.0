@@ -105,7 +105,6 @@ TEXT = {
         "method_labels": {"Assay": "🔵 Assay", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
         "help_final_wt": "W_f = Weight of sample + crucible after heating",
         "help_MW": "Make sure MW analyte is already multiplied by number of molecules.",
-        "help_
     },
     "Indonesia": {
         "app_caption": "v1.0.0 · Dibuat oleh NineComp",
