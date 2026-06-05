@@ -440,6 +440,8 @@ elif page == nav[1]:
                 mw_precipitate = st.number_input(T["label_mw_ppt"], min_value=0.0, format="%.4f", step=0.001)
                 ratio = st.number_input(T["label_ratio"], min_value=0.0, format="%.4f", step=0.001, value=1.0)
                 submitted = st.form_submit_button(T["btn_calc_gf"], use_container_width=True, type="primary")
+            # ← here, after the form block (less indented)
+            st.caption("⚠️ Make sure MW analyte is already multiplied by number of molecules.")
             if submitted:
                 if mw_precipitate <= 0: st.error(T["err_mw_ppt"])
                 elif mw_analyte <= 0: st.error(T["err_mw_analyte"])
