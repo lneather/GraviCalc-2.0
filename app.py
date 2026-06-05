@@ -272,7 +272,7 @@ if page == nav[0]:
             st.write(T["card_gf_desc"])
             st.caption(T["card_gf_formula"])
 
-elif page == nav[2]:
+elif page == nav[1]:
     st.title(T["assay_title"])
     st.markdown(T["assay_sub"])
     st.divider()
@@ -322,7 +322,7 @@ elif page == nav[2]:
                     st.session_state.pending_assay = None
                     st.success(T["saved_ok"])
 
-elif page == nav[3]:
+elif page == nav[2]:
     st.title(T["lod_title"])
     st.markdown(T["lod_sub"])
     st.divider()
@@ -377,7 +377,7 @@ elif page == nav[3]:
                     st.session_state.pending_lod = None
                     st.success(T["saved_ok"])
 
-elif page == nav[4]:
+elif page == nav[3]:
     st.title(T["roi_title"])
     st.markdown(T["roi_sub"])
     st.divider()
@@ -427,7 +427,7 @@ elif page == nav[4]:
                     st.session_state.pending_roi = None
                     st.success(T["saved_ok"])
 
-elif page == nav[1]:
+elif page == nav[4]:
     st.title(T["gf_title"])
     st.markdown(T["gf_sub"])
     st.divider()
