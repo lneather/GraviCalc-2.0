@@ -400,6 +400,8 @@ elif page == nav[4]:
             with c3:
                 final_weight = st.number_input(T["label_final_wt"], min_value=0.0, format="%.4f", step=0.0001, help=T["help_final_wt"])
             submitted = st.form_submit_button(T["btn_calc_roi"], use_container_width=True, type="primary")
+        st.caption("💡 " + T["help_final_wt"])
+
         if submitted:
             errors = []
             if not sample_name: errors.append(T["err_name"])
