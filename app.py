@@ -200,7 +200,7 @@ TEXT = {
         "btn_clear": "Hapus Semua",
         "method_labels": {"Assay": "🔵 Kadar", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
         "help_final_wt": "Berat Akhir = Berat sampel + krus setelah pemanasan",
-        "help_MW": "Pastikan bahwa Berat Molekul (BM) analit telah dikalikan dengan jumlah molekulnya.”
+        "help_MW": "Pastikan bahwa Berat Molekul (BM) analit telah dikalikan dengan jumlah molekulnya." 
     },
 }
 
