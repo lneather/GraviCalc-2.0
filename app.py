@@ -13,7 +13,7 @@ TEXT = {
     "English": {
         "app_caption": "v1.0.0 · ISO 9001",
         "app_note": "All calculations are performed locally. No data is transmitted.",
-        "nav": ["Overview", "Assay / Purity", "Loss on Drying", "Residue on Ignition", "Gravimetric Factor", "History"],
+        "nav": ["Overview", "Gravimetric Factor", "Assay / Purity", "Loss on Drying", "Residue on Ignition", "History"],
         "overview_title": "Gravimetric Analysis Calculator",
         "overview_sub": "Select a calculation method from the sidebar to begin.",
         "card_assay_title": "Assay / Purity",
@@ -107,7 +107,7 @@ TEXT = {
     "Indonesia": {
         "app_caption": "v1.0.0 · ISO 9001",
         "app_note": "Semua perhitungan dilakukan secara lokal. Tidak ada data yang dikirim.",
-        "nav": ["Beranda", "Kadar / Kemurnian", "Susut Pengeringan", "Sisa Pemijaran", "Faktor Gravimetri", "Riwayat"],
+        "nav": ["Beranda", "Faktor Gravimetri", "Kadar / Kemurnian", "Susut Pengeringan", "Sisa Pemijaran", "Riwayat"],
         "overview_title": "Kalkulator Analisis Gravimetri",
         "overview_sub": "Pilih metode perhitungan dari menu di samping untuk memulai.",
         "card_assay_title": "Kadar / Kemurnian",
@@ -272,7 +272,7 @@ if page == nav[0]:
             st.write(T["card_gf_desc"])
             st.caption(T["card_gf_formula"])
 
-elif page == nav[1]:
+elif page == nav[2]:
     st.title(T["assay_title"])
     st.markdown(T["assay_sub"])
     st.divider()
@@ -322,7 +322,7 @@ elif page == nav[1]:
                     st.session_state.pending_assay = None
                     st.success(T["saved_ok"])
 
-elif page == nav[2]:
+elif page == nav[3]:
     st.title(T["lod_title"])
     st.markdown(T["lod_sub"])
     st.divider()
@@ -377,7 +377,7 @@ elif page == nav[2]:
                     st.session_state.pending_lod = None
                     st.success(T["saved_ok"])
 
-elif page == nav[3]:
+elif page == nav[4]:
     st.title(T["roi_title"])
     st.markdown(T["roi_sub"])
     st.divider()
@@ -427,7 +427,7 @@ elif page == nav[3]:
                     st.session_state.pending_roi = None
                     st.success(T["saved_ok"])
 
-elif page == nav[4]:
+elif page == nav[1]:
     st.title(T["gf_title"])
     st.markdown(T["gf_sub"])
     st.divider()
