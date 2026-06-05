@@ -11,7 +11,7 @@ st.set_page_config(
 
 TEXT = {
     "English": {
-        "app_caption": "v1.0.0 · ISO 9001",
+        "app_caption": "v1.0.0 · Created by NineComp",
         "app_note": "All calculations are performed locally. No data is transmitted.",
         "nav": ["Overview", "Gravimetric Factor", "Assay / Purity", "Loss on Drying", "Residue on Ignition", "History"],
         "overview_title": "Gravimetric Analysis Calculator",
@@ -104,10 +104,11 @@ TEXT = {
         "btn_clear": "Clear All",
         "method_labels": {"Assay": "🔵 Assay", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
         "help_final_wt": "W_f = Weight of sample + crucible after heating",
-        "help_MW": "Make sure MW analyte is already multiplied by number of molecules."
+        "help_MW": "Make sure MW analyte is already multiplied by number of molecules.",
+        "help_
     },
     "Indonesia": {
-        "app_caption": "v1.0.0 · ISO 9001",
+        "app_caption": "v1.0.0 · Dibuat oleh NineComp",
         "app_note": "Semua perhitungan dilakukan secara lokal. Tidak ada data yang dikirim.",
         "nav": ["Beranda", "Faktor Gravimetri", "Kadar / Kemurnian", "Kadar Air", "Kadar Abu", "Riwayat"],
         "overview_title": "Kalkulator Analisis Gravimetri",
@@ -146,7 +147,7 @@ TEXT = {
         "saved_ok": "Berhasil disimpan ke riwayat.",
         "lod_title": "Kadar Air (LOD)",
         "lod_sub": "Hitung persentase kadar air dan zat mudah menguap.",
-        "lod_table": "| Simbol | Keterangan |\n|--------|------------|\n| Bₐ | Berat awal (g) |\n| Bₖ | Berat kering (g) |\n| Bₜ | Berat tara (g) |",
+        "lod_table": "| Simbol | Keterangan |\n|--------|------------|\n| Wᵢ | Berat awal (g) |\n| W_d | Berat kering (g) |\n| Wₜ | Berat krus kosong (g) |",
         "lod_info": "Jika tidak menggunakan wadah, isi Tara = 0.",
         "placeholder_lod": "cth. Bets API #5678",
         "label_initial_wt": "Berat Awal (g)",
@@ -161,7 +162,7 @@ TEXT = {
         "metric_dry_wt": "Berat Kering Netto",
         "roi_title": "Kadar Abu (ROI)",
         "roi_sub": "Hitung persentase abu atau residu anorganik.",
-        "roi_table": "| Simbol | Keterangan |\n|--------|------------|\n| Bₐ | Berat akhir (g) |\n| Bₜ | Berat krus kosong (g) |\n| Bₛ | Berat sampel (g) |",
+        "roi_table": "| Simbol | Keterangan |\n|--------|------------|\n| W_f | Berat akhir (g) |\n| W_t | Berat krus kosong (g) |\n| Wₛ | Berat sampel (g) |",
         "placeholder_roi": "cth. Eksipien Lot #001",
         "label_crucible_tare": "Berat Krus Kosong (g)",
         "label_final_wt": "Berat Akhir (g)",
