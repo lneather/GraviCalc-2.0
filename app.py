@@ -4,14 +4,14 @@ from datetime import datetime
 import pandas as pd
 
 st.set_page_config(
-    page_title="GraviCalc — Gravimetric Analysis",
+    page_title="GraviO — Gravimetric Analysis",
     page_icon="⚗️",
     layout="wide",
 )
 
 TEXT = {
     "English": {
-        "app_caption": "v1.0.0 · Created by NineComp",
+        "app_caption": "v1.0.0 · by NineComp",
         "app_note": "All calculations are performed locally. No data is transmitted.",
         "nav": ["Overview", "Gravimetric Factor", "Assay / Purity", "Loss on Drying", "Residue on Ignition", "History"],
         "overview_title": "Gravimetric Analysis Calculator",
