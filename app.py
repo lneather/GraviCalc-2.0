@@ -107,7 +107,7 @@ TEXT = {
         "help_MW": "Make sure MW analyte is already multiplied by number of molecules.",
     },
     "Indonesia": {
-        "app_caption": "v1.0.0 · Dibuat oleh NineComp",
+        "app_caption": "v1.0.0 · by NineComp",
         "app_note": "Semua perhitungan dilakukan secara lokal. Tidak ada data yang dikirim.",
         "nav": ["Beranda", "Faktor Gravimetri", "Kadar / Kemurnian", "Kadar Air", "Kadar Abu", "Riwayat"],
         "overview_title": "Kalkulator Analisis Gravimetri",
@@ -227,7 +227,7 @@ def save_to_history(method, sample_name, result, unit, inputs):
     })
 
 with st.sidebar:
-    st.markdown("## ⚗️ GraviCalc")
+    st.markdown("## ⚗️ GraviO")
     st.caption(TEXT[st.session_state.lang]["app_caption"])
     st.divider()
 
