@@ -104,7 +104,6 @@ TEXT = {
         "btn_clear": "Clear All",
         "method_labels": {"Assay": "🔵 Assay", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
         "help_final_wt": "W_f = Weight of sample + crucible after heating",
-        "help_MW": "Make sure MW analyte is already multiplied by number of molecules.",
     },
     "Indonesia": {
         "app_caption": "v1.0.0 · by NineComp",
@@ -200,7 +199,6 @@ TEXT = {
         "btn_clear": "Hapus Semua",
         "method_labels": {"Assay": "🔵 Kadar", "LOD": "🟢 LOD", "ROI": "🟠 ROI"},
         "help_final_wt": "Berat Akhir = Berat sampel + krus setelah pemanasan",
-        "help_MW": "Pastikan bahwa Berat Molekul (BM) analit telah dikalikan dengan jumlah molekulnya." 
     },
 }
 
@@ -402,7 +400,6 @@ elif page == nav[4]:
             with c3:
                 final_weight = st.number_input(T["label_final_wt"], min_value=0.0, format="%.4f", step=0.0001, help=T["help_final_wt"])
             submitted = st.form_submit_button(T["btn_calc_roi"], use_container_width=True, type="primary")
-        st.caption("💡 " + T["help_final_wt"])
 
         if submitted:
             errors = []
